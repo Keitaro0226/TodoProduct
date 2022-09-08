@@ -8,18 +8,29 @@
 import UIKit
 import RealmSwift
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
+    
+    var toolBar:UIToolbar!
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var textView: UITextView!
     
+    @IBOutlet var datePickerTextField: UITextField!
+    
     let realm = try! Realm()
+    let datePicker = UIDatePicker()
     var list: Results<Item>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        datePickerTextField.delegate = self
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        setupToolbar()
         
     }
     
@@ -41,6 +52,35 @@ class RegisterViewController: UIViewController {
             })
         }catch{
         }
+    }
+    
+    func setupToolbar() {
+            //datepicker上のtoolbarのdoneボタン
+            toolBar = UIToolbar()
+            toolBar.sizeToFit()
+            let toolBarBtn = UIBarButtonItem(title: "DONE", style: .plain, target: self, action: #selector(doneBtn))
+            toolBar.items = [toolBarBtn]
+            datePickerTextField.inputAccessoryView = toolBar
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePicker.Mode.date
+        textField.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
+    }
+
+        //datepickerが選択されたらtextfieldに表示
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
+        // 日付のフォーマット
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy年MM月dd日"
+                datePickerTextField.text = (formatter.string(from: Date()))
+    }
+
+    //toolbarのdoneボタン
+    @objc func doneBtn(){
+        datePickerTextField.resignFirstResponder()
     }
         
         

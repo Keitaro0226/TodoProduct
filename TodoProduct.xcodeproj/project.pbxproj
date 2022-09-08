@@ -17,6 +17,8 @@
 		B16C242828C5C1DA00631376 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B16C242728C5C1DA00631376 /* RealmSwift */; };
 		B185BF9F28C5C77A006939A0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B185BF9E28C5C77A006939A0 /* RegisterViewController.swift */; };
 		B185BFA128C5C8A1006939A0 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B185BFA028C5C8A1006939A0 /* Todo.swift */; };
+		B185BFA428C74279006939A0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B185BFA228C74279006939A0 /* MainTableViewCell.swift */; };
+		B185BFA528C74279006939A0 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B185BFA328C74279006939A0 /* MainTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		B16C241E28C5BEA500631376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B185BF9E28C5C77A006939A0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B185BFA028C5C8A1006939A0 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		B185BFA228C74279006939A0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		B185BFA328C74279006939A0 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				B16C241B28C5BEA500631376 /* LaunchScreen.storyboard */,
 				B16C241E28C5BEA500631376 /* Info.plist */,
 				B185BFA028C5C8A1006939A0 /* Todo.swift */,
+				B185BFA228C74279006939A0 /* MainTableViewCell.swift */,
+				B185BFA328C74279006939A0 /* MainTableViewCell.xib */,
 			);
 			path = TodoProduct;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 			files = (
 				B16C241D28C5BEA500631376 /* LaunchScreen.storyboard in Resources */,
 				B16C241A28C5BEA500631376 /* Assets.xcassets in Resources */,
+				B185BFA528C74279006939A0 /* MainTableViewCell.xib in Resources */,
 				B16C241828C5BEA400631376 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +166,7 @@
 				B16C241128C5BEA400631376 /* AppDelegate.swift in Sources */,
 				B16C241328C5BEA400631376 /* SceneDelegate.swift in Sources */,
 				B185BF9F28C5C77A006939A0 /* RegisterViewController.swift in Sources */,
+				B185BFA428C74279006939A0 /* MainTableViewCell.swift in Sources */,
 				B185BFA128C5C8A1006939A0 /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -35,6 +35,8 @@ class ViewController: UIViewController, UITableViewDataSource {
             }catch{
             }
         
+        table.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+            
         
     }
     
@@ -51,8 +53,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = list[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
+        
+        cell.titleLabel?.text = list[indexPath.row].title
+        cell.dateLabel?.text = "aa"
         return cell
     }
     
