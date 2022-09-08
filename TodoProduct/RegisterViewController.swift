@@ -42,8 +42,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         newTodo.title = titleTextField.text!
         newTodo.detail = textView.text!
+        newTodo.date = datePickerTextField.text!
         
-       
+        
         
         do{
             let realm = try Realm()
@@ -55,12 +56,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupToolbar() {
-            //datepicker上のtoolbarのdoneボタン
-            toolBar = UIToolbar()
-            toolBar.sizeToFit()
-            let toolBarBtn = UIBarButtonItem(title: "DONE", style: .plain, target: self, action: #selector(doneBtn))
-            toolBar.items = [toolBarBtn]
-            datePickerTextField.inputAccessoryView = toolBar
+        //datepicker上のtoolbarのdoneボタン
+        toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let toolBarBtn = UIBarButtonItem(title: "DONE", style: .plain, target: self, action: #selector(doneBtn))
+        toolBar.items = [toolBarBtn]
+        datePickerTextField.inputAccessoryView = toolBar
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -69,30 +70,30 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         textField.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
     }
-
-        //datepickerが選択されたらtextfieldに表示
+    
+    //datepickerが選択されたらtextfieldに表示
     @objc func datePickerValueChanged(sender:UIDatePicker) {
         // 日付のフォーマット
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy年MM月dd日"
-                datePickerTextField.text = (formatter.string(from: Date()))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
+        datePickerTextField.text = (formatter.string(from: Date()))
     }
-
+    
     //toolbarのdoneボタン
     @objc func doneBtn(){
         datePickerTextField.resignFirstResponder()
     }
-        
-        
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
-        
-    }
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}

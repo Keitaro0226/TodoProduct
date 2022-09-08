@@ -12,6 +12,7 @@ class Item: Object {
     
     @objc dynamic var title: String = ""
     @objc dynamic var detail: String = ""
+    @objc dynamic var date: String = ""
     
    
 }

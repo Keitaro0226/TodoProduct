@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
         
         cell.titleLabel?.text = list[indexPath.row].title
-        cell.dateLabel?.text = "aa"
+        cell.dateLabel?.text = list[indexPath.row].date
         return cell
     }
     
