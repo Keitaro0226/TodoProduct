@@ -21,6 +21,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     let datePicker = UIDatePicker()
     var list: Results<Item>!
     
+    var listTitle: String?
+    var listDetail: String?
+    var listDate: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,8 +34,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         datePickerTextField.delegate = self
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.preferredDatePickerStyle = .wheels
-        
         setupToolbar()
+    
+        setupToolbar()
+    
+        guard let listTitle = listTitle else {return}
+        titleTextField.text = listTitle
+       
+        
+        
+        guard let listDate = listDate else {return}
+        datePickerTextField.text = listDate
+        
+        guard let listDetail = listDetail else {return}
+        textView.text = listDetail
+        
         
     }
     
@@ -46,9 +64,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         
         
+        
+        
         do{
             let realm = try Realm()
             try realm.write({ () -> Void in
+                
                 realm.add(newTodo)
             })
         }catch{
