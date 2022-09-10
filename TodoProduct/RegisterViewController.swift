@@ -75,7 +75,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }catch{
         }
         
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setupToolbar() {
