@@ -74,6 +74,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             })
         }catch{
         }
+        
+        
     }
     
     func setupToolbar() {

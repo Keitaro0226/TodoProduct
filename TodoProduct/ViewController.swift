@@ -9,11 +9,15 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     
     
     @IBOutlet var table: UITableView!
+    
+    @IBOutlet var searchBar:UISearchBar!
+
+    @IBOutlet var searchLabel: UILabel!
     
     let realm = try! Realm()
     var list: Results<Item>!
@@ -27,6 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         table.dataSource = self
         table.delegate = self
+        
+        searchBar.delegate = self
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
@@ -104,6 +110,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // 定義したアクションをセット
         return UISwipeActionsConfiguration(actions: [deleteAction])
       }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+     
+        let results = realm.objects(Item.self).filter("title LIKE %@", searchText)
+        
+        let count = results.count
+        print(results)
+        if (count == 0) {
+            // 検索結果が0件の場合
+            
+            searchLabel.text = "検索結果がありません。"
+           
+        } else {
+            // 検索データがある場合
+            list = results
+            table.reloadData()
+        }
+   
+
+        
+//           let realm = try! Realm()
+//
+//           if searchText.isEmpty {
+//               list = realm.objects(Item.self)
+//           } else {
+//               list = realm
+//                   .objects(Item.self)
+//                   .filter("title LIKE %@", searchText)
+//
+//           }
+       
+       }
     
 
     
