@@ -15,14 +15,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet var table: UITableView!
     
-    @IBOutlet var searchBar:UISearchBar!
-
-    @IBOutlet var searchLabel: UILabel!
+   // @IBOutlet var searchBar:UISearchBar!
+    
+   // @IBOutlet var searchLabel: UILabel!
     
     let realm = try! Realm()
-    var list: Results<Item>!
-    
-    
+    var list: Results<Item>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         table.dataSource = self
         table.delegate = self
         
-        searchBar.delegate = self
+        //searchBar.delegate = self
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
@@ -62,8 +60,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
         
-        cell.titleLabel?.text = list[indexPath.row].title
-        cell.dateLabel?.text = list[indexPath.row].date
+   
+        cell.titleLabel?.text = list?[indexPath.row].title
+        cell.dateLabel?.text = list?[indexPath.row].date
         return cell
     }
     
@@ -72,82 +71,68 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.deselectRow(at: indexPath, animated: false)
         let cell = self.table.cellForRow(at:indexPath) as! MainTableViewCell
         
-        print(list[indexPath.row])
+        print(list?[indexPath.row])
         
-        let nextView = storyboard!.instantiateViewController(withIdentifier: "secondMain") as! RegisterViewController//遷移先のViewControllerを設定
+        let nextView = storyboard!.instantiateViewController(withIdentifier: "secondMain") as! EditViewController//遷移先のViewControllerを設定
         
-        nextView.listTitle = list[indexPath.row].title
-        nextView.listDetail = list[indexPath.row].detail
-        nextView.listDate = list[indexPath.row].date
+        nextView.listTitle = list?[indexPath.row].title
+        nextView.listDetail = list?[indexPath.row].detail
+        nextView.listDate = list?[indexPath.row].date
         self.navigationController?.pushViewController(nextView, animated: true)
         
     }
     
     // スワイプした時に表示するアクションの定義
-      func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-
-       // 削除処理
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // 削除処理
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-          //削除処理を記述
-           
+            //削除処理を記述
+            
             let realm = try! Realm()
-           
+            
             do{
-              try realm.write{
-                  realm.delete(self.list[indexPath.row])
-              }
+                try realm.write{
+                    realm.delete(self.list![indexPath.row])
+                }
             }catch {
-              print("Error \(error)")
+                print("Error \(error)")
             }
             
-          print("Deleteがタップされた")
+            print("Deleteがタップされた")
             self.table.reloadData()
-
-          // 実行結果に関わらず記述
-          completionHandler(true)
+            
+            // 実行結果に関わらず記述
+            completionHandler(true)
         }
-
+        
         // 定義したアクションをセット
         return UISwipeActionsConfiguration(actions: [deleteAction])
-      }
+    }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-     
-        let results = realm.objects(Item.self).filter("title LIKE %@", searchText)
-        
-        let count = results.count
-        print(results)
-        if (count == 0) {
-            // 検索結果が0件の場合
-            
-            searchLabel.text = "検索結果がありません。"
-           
-        } else {
-            // 検索データがある場合
-            list = results
-            table.reloadData()
-        }
-   
-
-        
-//           let realm = try! Realm()
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //
-//           if searchText.isEmpty {
-//               list = realm.objects(Item.self)
-//           } else {
-//               list = realm
-//                   .objects(Item.self)
-//                   .filter("title LIKE %@", searchText)
+//        let results = realm.objects(Item.self).filter("title LIKE %@", searchText)
 //
-//           }
-       
-       }
-    
-
-    
-    
-    
-    
+//        let count = results.count
+//        print(results)
+//        if (count == 0) {
+//            // 検索結果が0件の場合
+//            list = realm.objects(Item.self)
+//            searchLabel.text = "検索結果がありません。"
+//
+//        } else {
+//            // 検索データがある場合
+//
+//
+//            print(results)
+//            list = results
+//            table.reloadData()
+//        }
+//
+//
+//    }
+ 
     func getdata() {
         // Realmからデータを取得
         do{
@@ -158,11 +143,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    
-
-
-
-
-
+ 
+ 
 }
+
+
 

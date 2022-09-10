@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80E7EC08A173FB5EB15232D8 /* Pods_TodoProduct.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1351023B9BFF19E019F9FA23 /* Pods_TodoProduct.framework */; };
+		B15E315628CD16F90020D743 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15E315528CD16F90020D743 /* EditViewController.swift */; };
 		B16C241128C5BEA400631376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16C241028C5BEA400631376 /* AppDelegate.swift */; };
 		B16C241328C5BEA400631376 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16C241228C5BEA400631376 /* SceneDelegate.swift */; };
 		B16C241528C5BEA400631376 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16C241428C5BEA400631376 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		1351023B9BFF19E019F9FA23 /* Pods_TodoProduct.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoProduct.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F986C980205E00541AEBB8B /* Pods-TodoProduct.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoProduct.release.xcconfig"; path = "Target Support Files/Pods-TodoProduct/Pods-TodoProduct.release.xcconfig"; sourceTree = "<group>"; };
+		B15E315528CD16F90020D743 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		B16C240D28C5BEA400631376 /* TodoProduct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoProduct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16C241028C5BEA400631376 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B16C241228C5BEA400631376 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +70,6 @@
 				CF58ED87F0F1C8C1B3BABCE0 /* Pods-TodoProduct.debug.xcconfig */,
 				1F986C980205E00541AEBB8B /* Pods-TodoProduct.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -97,6 +98,7 @@
 				B16C241228C5BEA400631376 /* SceneDelegate.swift */,
 				B16C241428C5BEA400631376 /* ViewController.swift */,
 				B185BF9E28C5C77A006939A0 /* RegisterViewController.swift */,
+				B15E315528CD16F90020D743 /* EditViewController.swift */,
 				B16C241628C5BEA400631376 /* Main.storyboard */,
 				B16C241928C5BEA500631376 /* Assets.xcassets */,
 				B16C241B28C5BEA500631376 /* LaunchScreen.storyboard */,
@@ -237,6 +239,7 @@
 				B185BF9F28C5C77A006939A0 /* RegisterViewController.swift in Sources */,
 				B185BFA428C74279006939A0 /* MainTableViewCell.swift in Sources */,
 				B185BFA128C5C8A1006939A0 /* Todo.swift in Sources */,
+				B15E315628CD16F90020D743 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
